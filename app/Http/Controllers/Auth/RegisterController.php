@@ -19,7 +19,8 @@ class RegisterController extends Controller
 
         if($user) {
 
-            auth("web")->login($user);
+            return redirect(route("login"))->with('success','User successfully registered!');
+            //auth("web")->login($user);
         }
 
         return redirect(route("home"));

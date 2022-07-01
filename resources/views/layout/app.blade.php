@@ -23,7 +23,9 @@
     <link href="/css/app.css" rel="stylesheet">
 </head>
 <body class="antialiased">
-@yield('content')
+    @include('flash-message')
+
+    @yield('content')
 
 <script src="/js/app.js"></script>
 </body>
