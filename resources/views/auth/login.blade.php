@@ -3,6 +3,7 @@
 @section('title', 'Авторизация')
 
 @section('content')
+    @include('partials.header')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
