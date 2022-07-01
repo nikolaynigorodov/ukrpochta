@@ -16,12 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', MainController::class)->name('home');
+
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
 Route::middleware('guest')->group(function () {
-    Route::get('/', MainController::class)->name('home');
 
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login_process', [LoginController::class, 'login'])->name('login_process');
