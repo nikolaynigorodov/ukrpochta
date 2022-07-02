@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\MainController;
@@ -20,6 +21,9 @@ Route::get('/', MainController::class)->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+    Route::get('/order', [OrderController::class, 'showApplicationForm'])->name('order');
+    Route::post('/order_process', [OrderController::class, 'storeApplication'])->name('order_process');
 });
 
 Route::middleware('guest')->group(function () {
