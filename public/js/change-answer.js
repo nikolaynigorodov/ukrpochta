@@ -13,9 +13,9 @@ $(document).ready(function() {
             },
             success:function(response){
                 if(response == 0) {
-                    $("#responded-false").show().delay(3000).fadeOut(700);
+                    $("#responded-false").show().delay(2500).fadeOut(700);
                 } else if (response == 1) {
-                    $("#responded-true").show().delay(3000).fadeOut(700);
+                    $("#responded-true").show().delay(2500).fadeOut(700);
                 }
             }
         });

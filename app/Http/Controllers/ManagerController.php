@@ -9,7 +9,8 @@ class ManagerController extends Controller
 {
     public function showOrders()
     {
-        $orders = Order::orderBy('id', 'desc')->get();
+        $orders = Order::with('user')->orderBy('id', 'desc')->get();
+
         return view('manager.show_orders',[
             'orders' => $orders
         ]);

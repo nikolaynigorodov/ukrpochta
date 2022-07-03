@@ -34,15 +34,13 @@ class OrderController extends Controller
 
     public function storeApplication(OrderRequest $request)
     {
-        if(!$this->checkDateOrder->checking()) {
-            $order = $this->create($request->validated());
+        $order = $this->create($request->validated());
 
-            if($order) {
-                event(new OrderCreate($order));
-            }
-
-            return redirect(route("home"));
+        if($order) {
+            event(new OrderCreate($order));
         }
+
+        return redirect(route("home"));
     }
 
     protected function create(array $data)
