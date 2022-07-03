@@ -13,11 +13,9 @@ $(document).ready(function() {
             },
             success:function(response){
                 if(response == 0) {
-                    $("#responded-false").show();
-                    $("#responded-false").delay(3200).fadeOut(500);
+                    $("#responded-false").show().delay(3000).fadeOut(700);
                 } else if (response == 1) {
-                    $("#responded-true").show();
-                    $("#responded-true").delay(3200).fadeOut(500);
+                    $("#responded-true").show().delay(3000).fadeOut(700);
                 }
             }
         });
