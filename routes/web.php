@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -24,6 +25,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/order', [OrderController::class, 'showApplicationForm'])->name('order');
     Route::post('/order_process', [OrderController::class, 'storeApplication'])->name('order_process');
+
+    Route::get('/manager', [ManagerController::class, 'showOrders'])->name('manager');
+    Route::post('/manager-change-answer', [ManagerController::class, 'changeAnswer'])->name('change_answer_ajax');
 });
 
 Route::middleware('guest')->group(function () {

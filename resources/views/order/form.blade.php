@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'Add Application')
+@section('title', 'Create Order')
 
 @section('content')
     @include('partials.header')
