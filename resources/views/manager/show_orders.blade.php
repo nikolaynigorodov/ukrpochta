@@ -4,15 +4,17 @@
 
 @section('content')
     @include('partials.header')
-    <div class="row">
-        <div class="alert alert-success alert-block hidden" id="responded-true">
-            <strong>You have responded to this request.</strong>
-        </div>
-        <div class="alert alert-warning alert-block hidden" id="responded-false">
-            <strong>You noted that you did not respond to this request.</strong>
-        </div>
-    </div>
     <div class="container">
+        <div class="row">
+            <div class="row">
+                <div class="alert alert-success alert-block hidden" id="responded-true">
+                    <strong>You have responded to this request.</strong>
+                </div>
+                <div class="alert alert-warning alert-block hidden" id="responded-false">
+                    <strong>You noted that you did not respond to this request.</strong>
+                </div>
+            </div>
+        </div>
         <div class="row justify-content-center">
             <div class="col-md-8 mt-3">
                 <div class="card">

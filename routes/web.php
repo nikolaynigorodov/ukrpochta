@@ -18,16 +18,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', MainController::class)->name('home');
+Route::middleware(['manager.order', 'user.order'])->group(function () {
+    Route::get('/', MainController::class)->name('home');
+});
+
+Route::middleware(['auth', 'manager.order'])->group(function () {
+    Route::get('/manager', [ManagerController::class, 'showOrders'])->name('manager');
+    Route::post('/manager-change-answer', [ManagerController::class, 'changeAnswer'])->name('change_answer_ajax');
+});
+
+Route::middleware(['auth', 'user.order'])->group(function () {
+    Route::get('/order', [OrderController::class, 'showApplicationForm'])->name('order');
+    Route::post('/order_process', [OrderController::class, 'storeApplication'])->name('order_process');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-
-    Route::get('/order', [OrderController::class, 'showApplicationForm'])->name('order');
-    Route::post('/order_process', [OrderController::class, 'storeApplication'])->name('order_process');
-
-    Route::get('/manager', [ManagerController::class, 'showOrders'])->name('manager');
-    Route::post('/manager-change-answer', [ManagerController::class, 'changeAnswer'])->name('change_answer_ajax');
 });
 
 Route::middleware('guest')->group(function () {
