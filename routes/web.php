@@ -18,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['manager.order', 'user.order'])->group(function () {
-    Route::get('/', MainController::class)->name('home');
-});
+Route::get('/', MainController::class)->middleware(['manager.order', 'user.order'])->name('home');
 
 Route::middleware(['auth', 'manager.order'])->group(function () {
     Route::get('/manager', [ManagerController::class, 'showOrders'])->name('manager');
