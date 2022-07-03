@@ -7,11 +7,11 @@
     <div class="container">
         <div class="row">
             <div class="row">
-                <div class="alert alert-success alert-block hidden" id="responded-true">
-                    <strong>You have responded to this request.</strong>
+                <div class="alert alert-success alert-block hidden text-center" id="responded-true">
+                    <strong>You have marked that you have replied to this message.</strong>
                 </div>
-                <div class="alert alert-warning alert-block hidden" id="responded-false">
-                    <strong>You noted that you did not respond to this request.</strong>
+                <div class="alert alert-warning alert-block hidden text-center" id="responded-false">
+                    <strong>You noted that you did not respond to this message.</strong>
                 </div>
             </div>
         </div>

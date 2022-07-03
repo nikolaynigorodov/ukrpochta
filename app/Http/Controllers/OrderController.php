@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\OrderCreate;
+use App\Helpers\CheckDateOrder;
 use App\Http\Requests\OrderRequest;
 use App\Models\Order;
 use App\Services\FileUploadServices;
@@ -13,28 +14,35 @@ class OrderController extends Controller
      * @var FileUploadServices
      */
     private $fileUpload;
+    /**
+     * @var CheckDateOrder
+     */
+    private $checkDateOrder;
 
-    public function __construct(FileUploadServices $fileUpload)
+    public function __construct(FileUploadServices $fileUpload, CheckDateOrder $checkDateOrder)
     {
         $this->fileUpload = $fileUpload;
+        $this->checkDateOrder = $checkDateOrder;
     }
 
     public function showApplicationForm()
     {
-        return view("order.form");
+        return view("order.form", [
+            'checkForm' => $this->checkDateOrder->checking()
+        ]);
     }
 
     public function storeApplication(OrderRequest $request)
     {
-        $order = $this->create($request->validated());
+        if(!$this->checkDateOrder->checking()) {
+            $order = $this->create($request->validated());
 
-        if($order) {
+            if($order) {
+                event(new OrderCreate($order));
+            }
 
-            event(new OrderCreate($order));
-
-            return redirect(route("home"))->with('success','You have successfully sent the order.');
+            return redirect(route("home"));
         }
-        return redirect(route("home"))->with('error','Error. The application has not been sent.');
     }
 
     protected function create(array $data)
