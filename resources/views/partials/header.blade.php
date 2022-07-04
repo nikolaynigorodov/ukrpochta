@@ -6,12 +6,12 @@
         <div class="navbar-nav mx-auto">
             @if (Route::has('login'))
                 @auth
-                    <a href="{{ route("logout") }}" class="nav-item nav-link" style="font-size: medium">Log out</a>
+                    <a href="{{ route("logout") }}" class="nav-item nav-link px-3" style="font-size: medium">Log out</a>
                 @else
-                    <a href="{{ route('login') }}" class="nav-item nav-link" style="font-size: medium">Log in</a>
+                    <a href="{{ route('login') }}" class="nav-item nav-link px-3" style="font-size: medium">Log in</a>
 
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="nav-item nav-link" style="font-size: medium">Registration</a>
+                        <a href="{{ route('register') }}" class="nav-item nav-link mx-3" style="font-size: medium">Registration</a>
                     @endif
                 @endauth
             @endif
