@@ -25,14 +25,14 @@ class OrderController extends Controller
         $this->checkDateOrder = $checkDateOrder;
     }
 
-    public function showApplicationForm()
+    public function showOrderForm()
     {
         return view("order.form", [
             'checkForm' => $this->checkDateOrder->checking()
         ]);
     }
 
-    public function storeApplication(OrderRequest $request)
+    public function storeOrder(OrderRequest $request)
     {
         $order = $this->create($request->validated());
 

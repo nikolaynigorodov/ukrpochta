@@ -26,8 +26,8 @@ Route::middleware(['auth', 'manager.order'])->group(function () {
 });
 
 Route::middleware(['auth', 'user.order'])->group(function () {
-    Route::get('/order', [OrderController::class, 'showApplicationForm'])->name('order');
-    Route::post('/order_process', [OrderController::class, 'storeApplication'])->name('order_process');
+    Route::get('/order', [OrderController::class, 'showOrderForm'])->name('order');
+    Route::post('/order_process', [OrderController::class, 'storeOrder'])->name('order_process');
 });
 
 Route::middleware('auth')->group(function () {

@@ -43,7 +43,7 @@
                                         <td>{{$order->user->name}}</td>
                                         <td>{{$order->user->email}}</td>
                                         <td>
-                                            <a href="{{ $order->file }}">File</a>
+                                            <a href="{{ $order->file }}" target="_blank">File</a>
                                         </td>
                                         <td>{{\Carbon\Carbon::parse($order->created_at)->format('d/m/Y H:i')}}</td>
                                         <td>
